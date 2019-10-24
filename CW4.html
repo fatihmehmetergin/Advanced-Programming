@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://maeyler.github.io/305/work/Students.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="https://maeyler.github.io/305/images/icon192.png">
+    <title>Course Database </title>
+
+  <style>
+    .link {
+        color: blue;
+        cursor: pointer;
+        font-style: italic;
+    }
+    .course {
+        visibility: hidden;
+        font: 10px arial, sans-serif;
+        color: white;
+        background: blue;
+        cursor: text;
+        padding: 6px;
+        position: absolute;
+        height: 90px;
+        overflow-y: auto;
+    }
+    .link:hover .course { 
+        visibility: visible; 
+    }
+  </style>
+</head>
+
+<body>
+
+<h2 id="title">Course Database</h2>
+
+<p>Course code: 
+<input type="text" onchange="courseIn(value)" value="EECS 241 ">
+</p>
+<p id="out" onclick="doClick(event)"></p>
+
+<hr>
+<b>Sample code</b>
+<pre id="sample">function readData(file) {<br>    console.log("readData "+file);<br>    fetch(url+file)<br>        .then(r =&gt; r.text(), report)<br>        .then(addCourses, report);<br>}<br>function addCourses(txt) {<br>    let msg = txt.length+" chars, ";<br>    let a = txt.split("\n");<br>    msg += a.length+" lines, ";<br>    for (let s of a) {<br>      let std = parseCourses(s);<br>      keys.push(std.id); vals.push(std);<br>    }<br>    report(msg + keys.length+" students");<br>}</pre>
+<hr>
+
+<script>
+"use strict";
+function report(msg, id, list) {
+    out.innerHTML += "<br>"; msg += " ";
+    out.appendChild(document.createTextNode(msg));
+    let n1;
+    if (id) {
+        n1 = document.createElement("span");
+        n1.appendChild(document.createTextNode(id));
+        n1.classList.add("link");
+        out.appendChild(n1); msg += id;
+        //n1.addEventListener("click", doClick);
+    }
+    if (list) {
+        let n2 = document.createElement("span");
+        n2.appendChild(document.createTextNode(""));
+        n2.innerHTML += list.join("<br>");
+        n2.classList.add("course");
+        if (n1) n1.appendChild(n2);
+    }
+    console.log(msg);
+}
+const url = "https://maeyler.github.io/JS/data/";
+function readData(file) {
+    console.log("readData "+file);
+    fetch(url+file)
+        .then(r => r.text(), report)
+        .then(addCourses, report);
+}
+function parseCourses(line) {
+    let [id, date, place, ...list] = line.split("\t");
+  /*let id = b[0], name = b[1], gpa = b[2];
+    let list = [];
+    for (let i=3; i<b.length; i++) list.push(b[i]);
+  */
+    console.log("parseCourses Çalıştı.");
+    return {id, date, place, list};
+}
+function addCourses(txt) {
+    let msg = txt.length+" chars, ";
+    let a = txt.split("\n");
+    msg += a.length+" lines, ";
+    for (let s of a) {
+      let course = parseCourses(s);
+      keys.push(course.id); vals.push(course);
+    }
+    console.log(vals);
+    report(msg + keys.length+" courses");
+}
+function doClick(evt) {
+    //console.log(evt);
+    let t = evt.target;
+    let s = t.innerText;
+    if (/^\d+$/.test(s)) showCourse(s); //s contains digits
+    else if (t = t.firstElementChild) {
+        t.style.visibility = "";
+        let hide = function () {
+            t.style.visibility = "hidden";
+        };
+        setTimeout(hide, 5000);
+        console.log("doClick Çalıştı.");
+    }
+}
+
+function findID(id) {
+    let i = keys.indexOf(id);
+    console.log("findID Çalıştı.");
+    if (i < 0) return null;
+    return vals[i];
+}
+
+function showCourse(id) {
+    let t = id+" ";
+    let course = findID(id);
+    if (!course) {
+        report(t+"not found"); return;
+    }
+    t += course.date+" "+course.time;
+    report(t, course.list.length+" courses", course.list);
+    console.log("showCourse Çalıştı.");
+}
+
+function courseIn(code) {
+    code = code.toUpperCase();
+    let a = [];
+    for (let course of vals) 
+        if (course.id.includes(code)) 
+            a.push(course.id+" "+course.date);
+            
+    if (a.length > 0) {
+        report(code+": " , a.length+" course", a);
+    } else {
+        report("No course in "+code);
+    }
+
+}
+
+    title.innerText = document.title;
+    sample.innerText = readData+"\n"+addCourses;
+    const keys = [], vals = [];
+    readData("Courses.txt")
+
+</script>
+
+
+
+</body></html>
