@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="https://maeyler.github.io/JS/sss/inspector.css" rel="stylesheet" media="all">
+  <link rel="icon" href="../images/icon192.png">
+  <script src="https://maeyler.github.io/JS/sss/inspector.js"></script>
+  <script src="c4_data.js"></script>
+  <script src="c6_object.js"></script>
+  <script src="Quiz.js"></script>
+  <script src="Async.js"></script>
+  <title>Eloquent JavaScript </title>
+</head>
+
+<body>
+  <p><b id=docName></b> &nbsp;
+    <a href="https://maeyler.github.io/JS/sss/">Read me</a> &nbsp;
+    <a href="https://maeyler.github.io/JS/sss/Turkish">Turkish</a>
+  </p>
+  <div id=sss></div>
+  <pre id=disp1></pre>
+  <img id=disp2 />
+
+  <script>
+    "use strict";
+    var a, b, c, code;  //global variables
+    function init() {
+      let len = 123, name = "Circle", pi = Math.PI;
+      a = [0, 11, "22", "abc"];
+      c = { len, name, pi };
+      display(new Chap4());
+      display(new Chap6());
+      display(new Quiz());
+      display(new Async());
+      MENU = new CW5();  //global
+      display(MENU);
+    }
+
+    class CW5 extends Menu {
+
+      constructor() {
+        super();
+        this.course = new Course("Artificial Intelligence", "09:00", "25 October", "B121")
+        //var course2 = new Course("Machine Learning", "14:00", "31 October", "A112")
+        this.student = new Student("1321221028", "Ali Ak", "2,54", "BLM305");
+        this.point = new Point(3, 4);
+        this.point3d = new Point3d(3, 4, 5);
+        var courses = []
+        //courses.push(course) 
+        //courses.push(course2)
+        //this.courses = courses // For more courses I can use this class array
+
+      }
+
+    }
+
+    class Course {
+      constructor(name, time, date, rooms) {
+        this.name = name;
+        this.time = time;
+        this.date = date;
+        this.rooms = rooms;
+      }
+      toString() {
+        return this.name
+      }
+    }
+
+    class Student {
+      constructor(id, name, gpa, courses) {
+        this.id = id;
+        this.name = name;
+        this.gpa = gpa;
+        this.courses = courses;
+
+      }
+      toString() {
+        return this.id + ""
+      }
+    }
+
+    class Point {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+      }
+      toString() {
+        return this.x + " ," + this.y
+      }
+    }
+    class Point3d extends Point {
+      constructor(x, y, z) {
+        super(x, y)
+        this.z = z;
+      }
+      toString() {
+        return this.x + " ," + this.y + " ," + this.z
+      }
+    }
+    docName.innerText = "Inspector " + VERSION;
+    try {
+      inspect(sss, init); //makes the table
+      inp.value = "new Date()";
+    } catch (e) {
+      reportError(e);
+    }
+  </script>
+      <p> 
+          <p style="color: blue;font-size: 26px;">Previous Works</p>
+          <b> CW2 </b><br>
+          <a href="https://abdulhalik.github.io/Advanced-Programming/Counting.html">Counting - </a>
+        
+          <a href="https://abdulhalik.github.io/Advanced-Programming/Converter.html">Converter</a>
+          &emsp;
+          <br><br>
+          <b> CW3 </b><br>
+          <a href="https://abdulhalik.github.io/Advanced-Programming/CW3/c4_inspector.html">Inspector</a> 
+          &emsp;
+          <br><br>
+          <b> CW4 </b><br>
+          <a href="https://abdulhalik.github.io/Advanced-Programming/CW4.html">Course Database</a>
+      </p>
+      <pre id=disp1></pre>
+      <img id=disp2 />
+</body>
+
+</html>
