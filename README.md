@@ -9,3 +9,6 @@
 
 ## CW4
 - [Course Databese](https://abdulhalik.github.io/Advanced-Programming/CW4.html)
+
+## CW5
+- [EloquentJS](https://abdulhalik.github.io/Advanced-Programming/CW5/EloquentJS.html)
