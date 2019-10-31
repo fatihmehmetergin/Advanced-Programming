@@ -34,9 +34,11 @@
 <h2 id="title">Course Database</h2>
 
 <p>Course code: 
-<input type="text" onchange="courseIn(value)" value="EECS 241 ">
+<input type="text" onchange="courseIn(value)" value="EECS 241">
 </p>
-<p id="out" onclick="doClick(event)"></p>
+<p id="out" onclick="doClick(event)">Result;</p>
+<p id="out2"></p>
+<p id="out3"></p>    
 
 <hr>
 <b>Sample code</b>
@@ -74,11 +76,6 @@ function readData(file) {
 }
 function parseCourses(line) {
     let [id, date, place, ...list] = line.split("\t");
-  /*let id = b[0], name = b[1], gpa = b[2];
-    let list = [];
-    for (let i=3; i<b.length; i++) list.push(b[i]);
-  */
-    console.log("parseCourses Çalıştı.");
     return {id, date, place, list};
 }
 function addCourses(txt) {
@@ -120,33 +117,33 @@ function showCourse(id) {
     if (!course) {
         report(t+"not found"); return;
     }
-    t += course.date+" "+course.time;
+    t += course.id+" "+course.date;
     report(t, course.list.length+" courses", course.list);
-    console.log("showCourse Çalıştı.");
 }
 
 function courseIn(code) {
     code = code.toUpperCase();
     let a = [];
+    let b = [];
+    let c = [];
+    let d = [];
     for (let course of vals) 
-        if (course.id.includes(code)) 
+        if (course.id == (code)) {
             a.push(course.id+" "+course.date);
-            
-    if (a.length > 0) {
-        report(code+": " , a.length+" course", a);
+            b.push(course.date);
+            c.push(course.place);
+            d.push(course.list);
+            out2.innerText = b+" \n"+c+" \n"+d;
+        }    
+    if (d.length > 0) {
+        report(code+": " , d.length+" course", d);
     } else {
         report("No course in "+code);
     }
-
 }
-
     title.innerText = document.title;
     sample.innerText = readData+"\n"+addCourses;
     const keys = [], vals = [];
     readData("Courses.txt")
-
 </script>
-
-
-
 </body></html>
