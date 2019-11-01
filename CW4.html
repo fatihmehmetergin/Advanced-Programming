@@ -36,7 +36,7 @@
 <p>Course code: 
 <input type="text" onchange="courseIn(value)" value="EECS 241">
 </p>
-<p id="out" onclick="doClick(event)">Result;</p>
+<p id="out" onclick="doClick(event)"></p>
 <p id="out2"></p>
 <p id="out3"></p>    
 
@@ -87,7 +87,6 @@ function addCourses(txt) {
       keys.push(course.id); vals.push(course);
     }
     console.log(vals);
-    report(msg + keys.length+" courses");
 }
 function doClick(evt) {
     //console.log(evt);
@@ -135,9 +134,8 @@ function courseIn(code) {
             d.push(course.list);
             out2.innerText = b+" \n"+c+" \n"+d;
         }    
-    if (d.length > 0) {
-        report(code+": " , d.length+" course", d);
-    } else {
+    if (d.length <= 0) {
+        out.innerHTML = " "; 
         report("No course in "+code);
     }
 }
