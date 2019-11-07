@@ -12,3 +12,7 @@
 
 ## CW5
 - [EloquentJS](https://abdulhalik.github.io/Advanced-Programming/CW5/EloquentJS.html)
+
+## CW6
+- [File Operations](https://github.com/Abdulhalik/Advanced-Programming/blob/master/CW6/FileOperations.html)
+
