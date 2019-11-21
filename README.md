@@ -16,3 +16,6 @@
 ## CW6
 - [File Operations](https://abdulhalik.github.io/Advanced-Programming/CW6/FileOperations.html)
 
+## CW7
+- [Timing](https://abdulhalik.github.io/Advanced-Programming/CW7/Timing.html)
+
