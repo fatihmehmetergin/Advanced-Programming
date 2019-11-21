@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <script src="database.js"></script>
+    <title>Set Intersection </title>
+
+<script>
+"use strict";
+
+
+const url = "https://maeyler.github.io/JS/data/";
+const array = [], set = new Set();
+const myMap = new Map();
+
+function readData(file) {
+    console.log("readData "+file);
+    fetch(url+file)
+        .then(r => r.text(), console.log)
+        .then(addStudents, console.log);
+}
+function parseStudent(line) {
+    let b = line.split("\t");
+    let id = b[0], name = b[1], gpa = b[2];
+    let std = new Student(id, name, gpa);
+    let list = [];
+    for (let i=3; i<b.length; i++)
+        list.push(b[i]);
+    std.courses = list
+    return std
+}
+
+
+function addStudents(txt) {
+
+    let msg = "\nData contains ";
+    msg += txt.length+" chars, ";
+    let a = txt.split("\n");
+    msg += a.length+" lines <br>";
+    for (let s of a) {
+      let std = parseStudent(s);
+      array.push(std.id);
+     // set.add(std.name);
+      myMap.set(std.id, std);
+     // console.log(std.id + ' = ' + std);
+    }
+    msg += array.length+" students, "
+    msg += myMap.size+" distinct names"
+    out.innerHTML += msg;
+}
+
+ let count, countArray, randomId;
+
+function intersect3() {
+    randomId = 0, count = 0, countArray = 0;
+    let arrayTime = 0, mapTime = 0;
+
+
+    let s = new Set()
+    for (let i=0; i<10000; i++){
+    randomId = (116690070 + (Math.floor(Math.random() * 1000) + 1000)).toString();
+    let mT = performance.now()
+    if(myMap.has(randomId))
+      count++;
+
+    mapTime += performance.now() - mT
+    let aT = performance.now()
+    if(array.includes(randomId))
+       countArray++;
+    arrayTime += performance.now() - aT
+
+}
+   console.log("randomID = " + randomId);
+   console.log("Count = " + count);
+
+   let x = "ID Numarası: " + randomId;
+   let y = "Eşleşen ID Sayısı: " + count;
+   let a = "[ARRAY] "+arrayTime.toPrecision(3)+" msec "+count+" adet ID eşleşti.";
+   let m = "[MAP] "+mapTime.toPrecision(3)+" msec "+countArray+" adet ID eşleşti."+ "\n"
+   console.log(a);
+   console.log(m);
+   output.innerText += x + "\n"+a + "\n"+m+ "\n"
+ }
+
+
+
+
+</script>
+</head>
+
+<body>
+<h2 id=title></h2>
+<button id=mapArray onclick="intersect3()">Random ID search in Map and Array</button>
+<hr />
+<b>Result</b>
+<hr />
+
+<script>
+    title.innerText = document.title;
+   	readData("Students.txt")
+</script>
+<p id=out></p>
+<p id=output></p>
+
+
+<hr />
+<h3>Sample Code</h3>
+<pre id = sample></pre>
+<hr />
+
+<script>
+sample.innerText = intersect3
+</script>
+
+</body>
+</html>
