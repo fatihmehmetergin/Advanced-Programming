@@ -1,0 +1,135 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>CW 8 - Table</title>
+	
+<script>
+       
+class Course {
+constructor(course,time,date,room){
+this.course=course
+this.time=time
+this.date=date
+this.room=room
+}
+toString () {
+    return this.course + " " + this.date
+}
+}
+class Student {
+constructor(id,name,gpa,courses){
+this.id=id
+this.name=name
+this.gpa=gpa
+this.courses= courses
+}
+toString () {
+    return this.id +" "+ this.name
+}
+}
+class Database {
+    constructor(){
+        this.urlS = "https://maeyler.github.io/JS/data/Students.txt";
+        this.s_id=[]
+        this.c_id=[]
+        this.stu=[]
+        this.cour=[]
+        this.Students = new Map();
+        this.readStudents();
+    }
+readStudents() {
+    console.log("readStudents "+this.urlS);
+    fetch(this.urlS).then(r => r.text()).then(r => this.addStudent(r))   
+}
+
+addStudent(txt){
+
+   let a = txt.split("\n");
+
+   for (let s of a) {
+     let student = this.parseStudent(s);
+     this.Students.set(student.id,student);
+     this.s_id.push(student.id);
+     this.stu.push(student);
+   }
+}
+
+parseStudent(line){
+	let s = line.split("\t");
+    let courses = [];
+    for (let i=3; i<s.length; i++) 
+  //  courses.push(this.Courses.get(s[i]));
+    courses.push(s[i]);
+    const student = new Student(s[0],s[1],s[2],courses)
+
+    return student
+}
+makeTable(){
+ let std = this.Students;
+ var html="";
+html+="<tr><th></th></tr>"
+ for (let a of std){
+    let b=Array.from(a);
+     for(let i=1; i<2;i++){
+    html+="<tr>"
+        html+=  "<td>"+b[i].id+"</td>"
+        html+=  "<td>"+b[i].name+"</td>"
+        html+= " <td>"+b[i].gpa+"</td>"
+        html+= " <td>"+b[i].courses.length+"</td>"
+        html+="</tr>"
+ }
+}
+tablo.innerHTML=html;
+}
+}
+    </script>
+ 
+
+  <style>
+    .link {
+        color: blue;
+        cursor: pointer;
+        font-style: italic;
+    }
+    .course {
+        visibility: hidden;
+        font: 10px arial, sans-serif;
+        color: white;
+        background: blue;
+        cursor: text;
+        padding: 6px;
+        position: absolute;
+        height: 90px;
+        overflow-y: auto;
+    }
+    .link:hover .course { 
+        visibility: visible; 
+    }
+    table { border-collapse: collapse; }
+    th { color: blue; padding: 5px 5px; }
+    td { 
+        border: 3px solid blue; 
+        padding: 5px 5px; 
+        text-align: center; 
+	   }
+  </style>
+ <script>
+ </script>
+ </head>
+
+<body>
+
+<h2 id=title></h2>
+
+
+<button onclick="db.makeTable()"> Make Table</button><br>
+<table id="tablo"></table>
+<script>
+    title.innerText = document.title;
+    db = new Database();
+</script>
+
+</body>
+
+</html>
