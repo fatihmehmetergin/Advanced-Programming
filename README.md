@@ -19,3 +19,6 @@
 ## CW7
 - [Timing](https://abdulhalik.github.io/Advanced-Programming/CW7/Timing.html)
 
+## CW8
+- [Table](https://abdulhalik.github.io/Advanced-Programming/CW8/CW8.html)
+
