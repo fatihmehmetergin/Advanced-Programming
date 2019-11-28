@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#457cdb">
+    <meta name="Description" content="Here is the Advanced Programming Classwork Application!">
+    <link rel="manifest" href="manifest.json">
+    <link rel="shortcut icon" href="icons/icon192.png">
+    <link rel="icon" sizes="192x192" href="icons/icon192.png">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker
+                .register('https://abdulhalik.github.io/Advanced-Programming/sw.js')
+                .then((reg) => { console.log('SW Registered', reg) })
+                .catch(console.log)
+        }
+    </script>
+    <title>Adv Prog - Homepage</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="JS.png" height="35"/>
+            <h3>Advanced Programming<br>Classwork App</h3>
+        </div>
+    </header>
+    <div class="links">
+        <div class="container">
+            <h3>GitHub</h3>
+            <ul>
+                <li>Click <a href="https://github.com/bedirhanyildirim/AdvProg" target="_blank">here</a> for routing to repository on Github.</li>
+            </ul>
+            <h3>Class Works</h3>
+            <ul>
+                <li>1 - <a href="https://abdulhalik.github.io/Advanced-Programming/Counting.html">Counting</a></li>
+                <li>2 - <a href="https://abdulhalik.github.io/Advanced-Programming/Converter.html">Converter</a></li>
+                <li>3 - <a href="https://abdulhalik.github.io/Advanced-Programming/CW3/c4_inspector.html">Inspector</a></li>
+                <li>4 - <a href="https://abdulhalik.github.io/Advanced-Programming/CW4.html">Course Database</a></li>
+                <li>5 - <a href="https://abdulhalik.github.io/Advanced-Programming/CW5/EloquentJS.html">EloquentJS</a></li>
+                <li>6 - <a href="https://abdulhalik.github.io/Advanced-Programming/CW6/FileOperations.htm">File Operations</a></li>
+                <li>7 - <a href="https://abdulhalik.github.io/Advanced-Programming/CW7/Timing.html">Timing</a></li>
+                <li>8 - <a href="https://abdulhalik.github.io/Advanced-Programming/CW8/CW8.html">Table</a></li>
+            </ul>
+
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <h5>© 2018 Abdulhalık Korkmaz, All Rights Reserved</h5>
+        </div>
+    </footer>
+</body>
+</html>
