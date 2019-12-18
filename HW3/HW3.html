@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<body style="background-image:url(bg.jpg)">
+<input type=button value="Manipulate" onClick="bir.animate(t3,2000),bir.animate(t2,2000)">
+<input type=text value="Test" id="bir">
+  <div class="buton"> <input type=button value="Action" onClick="action()">	</div>
+  <br><br><br><br>
+<div class="mj"><img id='jpg' src="giphy.gif"  width="100" height="120" style="visibility:visible"></div>
+<br><br><br><br><br><br><br><br>
+<div class="mj2"><img id='jpg2' src="poke.gif"  width="100" height="120" style="visibility:visible"></div>
+
+
+
+<style>
+  body{
+  }
+    .mj {
+       transform: rotateY(180deg);
+       position: absolute;
+     }
+     .mj2 {
+        position: absolute;
+      }
+
+    .buton {
+      position: absolute;
+    }
+
+  </style>
+<script>
+
+
+const
+  r0 = "rotate(0)", x0 = "translateX(0)",
+  t2 = { transform: [r0, "rotate(90deg)", r0, "rotate(-150deg)", r0] },
+  t3 = { background: ["yellow", "cyan", "magenta", "yellow"] };
+
+function action(){
+  jpg.style.visibility = "visible"
+  var mjDancing = [
+    {transform: "scale(2.0)"},
+    {transform: "translateX(0px)"},
+
+    {transform: "translateX(-1200px)"},
+    {transform: "scale(3.0)"}
+
+  ];
+  var mjTiming = {
+    duration: 5000,
+    iterations: 1
+  }
+
+  document.getElementById("jpg").animate(
+    mjDancing,mjTiming
+  );
+  //setTimeout(function(){jpg.style.visibility = "hidden" }, 5000);
+
+ /////////
+ var mjDancing2 = [
+   {transform: "translateY(0px)"},
+   {transform: "translateY(600px)"},
+      {transform: "translateY(0px)"}
+ ];
+
+ var mjTiming2 = {
+   duration: 5000,
+   iterations: 1,
+   //delay: 5000
+ }
+  document.getElementById("jpg2").animate(
+    mjDancing2,mjTiming2
+  );
+  //setTimeout(function(){jpg2.style.visibility = "hidden" }, 10000);
+}
+
+
+</script>
+
+</body>
+</html>
