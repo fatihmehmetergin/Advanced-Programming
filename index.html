@@ -7,49 +7,193 @@
     <meta name="theme-color" content="#457cdb">
     <meta name="Description" content="Here is the Advanced Programming Classwork Application!">
     <link rel="manifest" href="manifest.json">
-    <link rel="shortcut icon" href="icons/icon192.png">
-    <link rel="icon" sizes="192x192" href="icons/icon192.png">
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker
-                .register('https://abdulhalik.github.io/Advanced-Programming/sw.js')
-                .then((reg) => { console.log('SW Registered', reg) })
-                .catch(console.log)
-        }
-    </script>
-    <title>Adv Prog - Homepage</title>
-</head>
-<body>
-    <header>
-        <div class="container">
-            <img src="JS.png" height="35"/>
-            <h3>Advanced Programming<br>Classwork App</h3>
-        </div>
-    </header>
-    <div class="links">
-        <div class="container">
-            <h3>GitHub</h3>
-            <ul>
-                <li>Click <a href="https://github.com/Abdulhalik/Advanced-Programming" target="_blank">here</a> for routing to repository on Github.</li>
-            </ul>
-            <h3>Class Works</h3>
-            <ul>
-                <li>1 - <a href="https://abdulhalik.github.io/Advanced-Programming/Counting.html">Counting</a></li>
-                <li>2 - <a href="https://abdulhalik.github.io/Advanced-Programming/Converter.html">Converter</a></li>
-                <li>3 - <a href="https://abdulhalik.github.io/Advanced-Programming/CW3/c4_inspector.html">Inspector</a></li>
-                <li>4 - <a href="https://abdulhalik.github.io/Advanced-Programming/CW4.html">Course Database</a></li>
-                <li>5 - <a href="https://abdulhalik.github.io/Advanced-Programming/CW5/EloquentJS.html">EloquentJS</a></li>
-                <li>6 - <a href="https://abdulhalik.github.io/Advanced-Programming/CW6/FileOperations.html">File Operations</a></li>
-                <li>7 - <a href="https://abdulhalik.github.io/Advanced-Programming/CW7/Timing.html">Timing</a></li>
-                <li>8 - <a href="https://abdulhalik.github.io/Advanced-Programming/CW8/CW8.html">Table</a></li>
-                <li>9 - <a href="https://abdulhalik.github.io/Advanced-Programming/CW9/GitHub_User.html">Github Users</a></li>
-            </ul>
+    <link rel="shortcut icon" href="JS.png">
+    <link rel="icon" sizes="192x192" href="JS.png">
 
-        </div>
-    </div>
+  <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+            .register('https://abdulhalik.github.io/Advanced-Programming/sw.js')
+            .then((reg) => { console.log('SW Registered', reg) })
+            .catch(console.log)
+    }
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Times, Helvetica, sans-serif;
+    }
+
+    .top-container {
+      background-color: #f1f1f1;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .header {
+      padding: 1px 1px;
+      background: #900C3F;
+      color: #f1f1f1;
+      font: normal 17px  Times , sans-serif;
+      letter-spacing: 4px;
+    }
+
+    a {
+      color: #4B413F ;
+      text-decoration: none;
+    }
+    .zui-table {
+        border: solid 1px  #900C3F;
+        border-collapse: collapse;
+        border-spacing: 0;
+        font: normal 16px  Times, sans-serif;
+
+    }
+    .zui-table thead th {
+        background-color: #F9FFFD;
+        border: solid 2px #900C3F;
+        color: #900C3F;
+        padding: 10px;
+        text-align: center;
+    	width:200px;
+
+    }
+    .zui-table tbody td {
+        border: solid 2px #900C3F;
+        color: #333;
+        padding: 10px;
+        text-align: left;
+        text-shadow: 1px 1px 1px #fff;
+    	  background-color: #F9FFFD;
+    }
+
+    .container {
+    width: 300px;
+    margin: 0 auto;
+    height: inherit;
+    }
+
+    #Project {
+        padding: 10px;
+        text-align: center;
+        text-shadow: 1px 1px 1px #fff;
+    	width:424px;
+    }
+  </style>
+
+
+  <div align=center>
+  <div class="header" id="myHeader">
+    <h2>Advanced Programming 2019 </h2><br>
+
+  </div>
+
+  <br>
+
+  <table class="zui-table">
+      <thead>
+          <tr>
+              <th>Term Project</th>
+
+  			</tr>
+      </thead>
+          <tbody>
+          <tr>
+              <td id="Project"><b><a href="">Birds Game</a></b></td>
+          </tr>
+      </tbody>
+
+          </table>
+  </html>
+  <br>
+  <table class="zui-table">
+      <thead>
+          <tr>
+              <th>ClassWorks</th>
+  			 <th>HomeWorks</th>
+  			</tr>
+      </thead>
+      <tbody >
+          <tr>
+              <td ><a href="https://abdulhalik.github.io/Advanced-Programming/Counting.html"><b>CW2</b> - Counting</a></td>
+  				<td ><a href="https://abdulhalik.github.io/Advanced-Programming//HW1/PoissonTable.html"><b>HW1</b> - Poisson Table</a></td>
+          </tr></tr>
+      </thead>
+      <tbody>
+
+          <tr>
+              <td><a href="https://abdulhalik.github.io/Advanced-Programming/Converter.html"><b>CW2</b> - Converter</a></td>
+  			<td><a href=""><b>HW2</b> - Student Database</a></td>
+          </tr></tr>
+      </thead>
+      </tbody>
+          <tr>
+              <td><a href="https://abdulhalik.github.io/Advanced-Programming/CW3/c4_inspector.html"><b>CW3</b> - Inspector</a></td>
+  			<td><a href="https://abdulhalik.github.io/Advanced-Programming/HW3/HW3.html"><b>HW3 </b>- Animations</a></td>
+          </tr></tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td><a href="https://abdulhalik.github.io/Advanced-Programming/CW4.html"><b>CW4</b> - Course Database</a></td>
+  			<td><a href="https://abdulhalik.github.io/Advanced-Programming/index.html"><b>HW4</b> - PWA HomePage</a></td>
+          </tr></tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td><a href="https://abdulhalik.github.io/Advanced-Programming/CW5/EloquentJS.html"><b>CW5</b> - EloquentJS</a></td>
+          </tr></tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td><a href="https://abdulhalik.github.io/Advanced-Programming/CW6/FileOperations.html"><b>CW6</b> - File Operations</a></td>
+          </tr>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td><a href="https://abdulhalik.github.io/Advanced-Programming/CW7/Timing.html"><b>CW7</b> - Timing
+  </a></td>
+          </tr>
+      </tbody>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="https://abdulhalik.github.io/Advanced-Programming/CW8/CW8.html"><b>CW8</b> - Table
+</a></td>
+        </tr>
+    </tbody>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="https://abdulhalik.github.io/Advanced-Programming/CW9/GitHub_User.html"><b>CW9</b> - GitHub Users
+</a></td>
+      </tr>
+  </tbody>
+  </table>
+  <br><br>
+  <table class="zui-table">
+      <thead>
+          <tr>
+              <th>About Me</th>
+  			</tr>
+      </thead>
+          <tbody>
+          <tr>
+  			<td id="homework2"><a href="https://github.com/Abdulhalik">Github</a></td>
+          </tr>
+      </tbody>
+      <tbody>
+          <tr>
+  			<td><a href="https://github.com/Abdulhalik/Advanced-Programming">MyRepo</a></td>
+          </tr>
+      </tbody>
+          </table>
+          <br><br>
+      </div>
     <footer>
         <div class="container">
-            <h5>© 2018 Abdulhalık Korkmaz, All Rights Reserved</h5>
+            <h5>© 2019 Abdulhalık Korkmaz, All Rights Reserved</h5>
         </div>
     </footer>
 </body>
