@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)https://maeyler.github.io/JS/hard/Table%20maker.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" sizes="192x192" href="https://maeyler.github.io/JS/images/JS.png">
+    <title>Poisson Table</title>
+
+  <style>
+    body { max-width: 440px; }
+    #sample { overflow-x: auto; }
+    table { border-collapse: collapse; }
+    th { color: black; padding: 5px 5px; }
+    td {
+        border: 1px solid #cc9228;
+        padding: 5px 18px;
+        text-align: center;
+        position: relative;
+    }
+    hr { width: 500px; }
+    pre { margin: auto; width: 550px; }
+  </style>
+</head>
+
+<body>
+<center>
+<h2 id="title">Poisson Table</h2>
+
+<table id="tablo"></table>
+
+</center>
+<hr>
+<b>Sample code</b>
+<pre id="sample">function makeRows(m, n) {<br>    let row = "&lt;th&gt;&lt;/th&gt;";<br>    for (let j = 1; j &lt;= n; j++) <br>        row += "&lt;th&gt;"+j+"&lt;/th&gt;";<br>    let text = "&lt;tr&gt;"+row+"&lt;/tr&gt;";<br>    for (let i = 1; i &lt;= m; i++) {<br>       row = "&lt;th&gt;"+i+"&lt;/th&gt;";<br>       for (let j = 1; j &lt;= n; j++) {<br>          let p = n*(i-1)+j;<br>          let s = "&lt;span class=tip&gt;C"+p+"&lt;/span&gt;"<br>          row += "&lt;td&gt;"+i+","+j+s+"&lt;/td&gt;";<br>       }<br>       text += "&lt;tr&gt;"+row+"&lt;/tr&gt;";<br>    }<br>    let t = text.length+" chars";<br>    console.log("makeRows: "+m+"x"+n+" "+t);<br>    tablo.innerHTML = text; out.innerText = t; <br>}</pre>
+<hr>
+<i>Abdulhalık Korkmaz <br>Fatih Sultan Mehmet V. University
+<br>Computer Sciences</i>
+
+<script>
+"use strict";
+function makeRows(m, n) {
+    let row = "<th></th>";
+    for (let j = 0.5; j <= 3; j+=0.5)
+        row += "<th>"+"λ="+j+"</th>";
+    let text = "<tr>"+row+"</tr>";
+    for (let i = 0; i < m; i++) {
+       row = "<th>"+i+"</th>";
+       for (let j = 0.5; j <= 3; j+=0.5) {
+           let val = Math.exp(-(j)) * (Math.pow(j, i) / factorial(i));
+         let fixedVal = val.toFixed(4);
+          row += "<td>"+fixedVal+"</td>";
+       }
+       text += "<tr>"+row+"</tr>";
+    }
+    tablo.innerHTML = text;
+}
+
+function factorial(value){
+  if (value < 0) {
+    return -1;
+  } else if (value == 0) {
+    return 1;
+  } else {
+    return (value * factorial(value - 1));
+  }
+}
+    title.innerText = document.title;
+    sample.innerText = makeRows.toString()+ "\n\n" + factorial.toString();
+    makeRows(9, 6);
+</script>
+</body></html>
