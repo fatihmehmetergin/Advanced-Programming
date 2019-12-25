@@ -1,31 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Bird Game - JavaScript</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="https://fonts.googleapis.com/css?family=Teko:700" rel="stylesheet">
     <style>
-        canvas{
+        canvas {
             border: 1px solid #000;
             display: block;
             margin: 0 auto;
         }
 
-        h2 {
-          font-family: 'Teko';
-          font-style: normal;
-          font-weight: 700;
-          text-align: center;
-          margin: 0 auto;
+         h2 {
+            font-family: 'Teko';
+            font-style: normal;
+            font-weight: 700;
+            text-align: center;
+            margin: 0 auto;
         }
-    </style>
-</head>
-<body>
-    <div>
-      <h2> Bird Game</h2>
-    </div>
-    <canvas id="bird" width="320" height="480"></canvas>
 
-    <script src="bird.js"></script>
+        p   {
+            font-family: 'Teko';
+            font-style: normal;
+            font-weight: 700;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+    </style>
+    <title>Bird Game by Abdulhalik</title>
+</head>
+<div>
+    <h2> Bird Game </h2>
+</div>
+<body onload="startGame()">
+<canvas id="canvas" width="320" height="480"></canvas>
+
+<p><a>Refs: </a>
+    <a href="https://www.w3schools.com/graphics/game_gravity.asp" target="NewTab">Gravity Game</a>,
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Touch_events" target="NewTab">Touch Events</a>,
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D" target="NewTab">Canvas Rendering</a>,
+<script src="bird.js"></script>
 </body>
 </html>
