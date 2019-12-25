@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
     <link href="https://fonts.googleapis.com/css?family=Teko:700" rel="stylesheet">
     <style>
         canvas {
@@ -18,6 +18,15 @@
             margin: 0 auto;
         }
 
+        h4 {
+            font-family: 'Teko';
+            font-style: italic;
+            font-weight: 700;
+            color: chocolate;
+            text-align: center;
+            margin: 0 auto;
+        }
+
         p   {
             font-family: 'Teko';
             font-style: normal;
@@ -26,19 +35,25 @@
             margin: 0 auto;
         }
 
+        h5 {
+            margin: 0 auto;
+            text-align: center;
+        }
+
     </style>
-    <title>Bird Game by Abdulhalik</title>
+    <title>Bird Game v1.0</title>
 </head>
 <div>
-    <h2> Bird Game </h2>
+    <h2> BIRD GAME v1.0 </h2>
 </div>
 <body onload="startGame()">
 <canvas id="canvas" width="320" height="480"></canvas>
-
+<p><h4>PRESS LONG TO ACCELERATE THE BIRD</h4></p>
 <p><a>Refs: </a>
     <a href="https://www.w3schools.com/graphics/game_gravity.asp" target="NewTab">Gravity Game</a>,
     <a href="https://developer.mozilla.org/en-US/docs/Web/API/Touch_events" target="NewTab">Touch Events</a>,
-    <a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D" target="NewTab">Canvas Rendering</a>,
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D" target="NewTab">Canvas Rendering</a>
+    <h5>© 2019 Abdulhalık Korkmaz, All Rights Reserved</h5>
 <script src="bird.js"></script>
 </body>
 </html>
