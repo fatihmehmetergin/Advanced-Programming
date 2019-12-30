@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <script src="Database.js"></script>
+    <title>Student Database </title>
+<script>
+    function randomStudent(){
+        let a=[...data.students.keys()];
+        let b= data.students.get(a[Math.floor(Math.random()*a.length)]);
+        out.innerText=b;
+    }
+    function aboveGPA(a){
+        if(a==""){
+            out.innerText="Please write GPA";
+        }else{
+            let c=0;
+            let gpa=0;
+            for (i of data.students.values()){
+                gpa=i.gpa;
+                if(gpa>a)
+                    c++;
+            }
+            out.innerText="Number of students above a given GPA: "+c;
+        }
+    }
+    function aboveGPAStudents(a){
+        if(a==""){
+            out.innerText="Please write GPA";
+        }else{
+            out.innerText="";
+            let gpa=0;
+            let s=[];
+            for (i of data.students.values()){
+                gpa=i.gpa;
+                if(gpa>a){
+                    s.push(i);
+                }
+                if(s.length>100){
+                    out.innerText="Too many students. Here is first 100 students.(ordered by Student ID) \n";
+                    break
+                }
+
+            }
+            for (i of s){
+                out.innerText+=i+"\n";
+            }
+        }
+    }
+    function coursesTaken(StudentID){
+        if(data.students.get(StudentID)==null){
+            out.innerText="Please write a correct Student ID";
+        }else{
+            out.innerText="Courses taken by a given student:\n";
+            let c=[];
+            c=data.students.get(StudentID).courses;
+            for(i of c){
+                out.innerText+=i+"\n";
+            }
+        }
+    }
+    function examSchedule(StudentID){
+        if(data.students.get(StudentID)==null){
+            out.innerText="Please write a correct Student ID";
+        }else{
+            out.innerText="Exam schedule for a given student:\n";
+            let c=[];
+            c=data.students.get(StudentID).courses;
+            let d="";
+            for(i of c){
+                d=data.courses.get(i).date;
+                out.innerText+=i+" "+d+"\n";
+            }
+        }
+    }
+    function studentList(CourseID){
+        if(data.courses.get(CourseID)==null){
+            out.innerText="Please write a correct Course Name";
+        }else{
+            let c=data.courses.get(CourseID).name;
+            out.innerText="Student list "+c+" course:\n";
+            for(i of data.students){
+                for (j of i[1].courses){
+                    if(j==c)
+                        out.innerText+=i[1]+"\n";
+                }
+            }
+        }
+    }
+    function courseList(examRoom){
+        if(examRoom==""){
+            out.innerText="Please write a Exam Room";
+        }else{
+            out.innerText="Course list for a given exam room:\n";
+            for(i of data.courses){
+                for (j of i[1].rooms){
+                    if(j==examRoom)
+                        out.innerText+=i[1]+"\n";
+                }
+            }
+        }
+    }
+    function totalCourse(examRoom){
+        if(examRoom==""){
+            out.innerText="Please write a Exam Room";
+        }else{
+            let c=0;
+            for(i of data.courses){
+                for (j of i[1].rooms){
+                    if(j==examRoom)
+                        c++;
+                }
+            }
+            out.innerText="Total number of courses in a given room: "+c;
+        }
+    }
+
+</script>
+
+<p><b>Student ID:</b>
+    <input type=number id=S_Id style="width:100px" >
+</p>
+<p>
+<b>Course Name:</b>
+    <input type=text  id=C_Name style="width:100px" >
+</p>
+<p><b>GPA:</b>
+    <input  type=number id=S_Gpa style="width:100px" >
+</p>
+<p>
+<b>Exam Room:</b>
+    <input type=text  id=E_Room style="width:100px" >
+</p>
+<hr/>
+<p>
+<input type=button value="Random"  onClick="randomStudent()" >&emsp;
+<input type=button value="Number of Student Above GPA"  onClick="aboveGPA(S_Gpa.value)">&emsp;
+</p>
+<p>
+<input type=button value="Courses Taken by a Student"  onClick="coursesTaken(S_Id.value)">&emsp;
+<input type=button value="Exam Schedule"   onClick="examSchedule(S_Id.value)">&emsp;
+</p>
+<p>
+<input type=button value="Student List by Course"  onClick="studentList(C_Name.value)">&emsp;
+<input type=button value="Course List by Exam Room"  onClick="courseList(E_Room.value)">&emsp;
+</p>
+<p>
+<input type=button value="Total Number of Courses"   onClick="totalCourse(E_Room.value)">&emsp;
+<input type=button value="Students Above a Given GPA"   onClick="aboveGPAStudents(S_Gpa.value)">
+</p>
+<hr/>
+<p id=out></p>
+<hr/>
+
+
+<script>
+    data = new Database();
+</script>
+
+</body>
+</html>
