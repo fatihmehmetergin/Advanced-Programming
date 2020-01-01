@@ -1,60 +1,182 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
-    <link href="https://fonts.googleapis.com/css?family=Teko:700" rel="stylesheet">
-    <style>
-        canvas {
-            border: 1px solid #000;
-            display: block;
-            margin: 0 auto;
-        }
-
-         h2 {
-            font-family: 'Teko';
-            font-style: normal;
-            font-weight: 700;
-            text-align: center;
-            margin: 0 auto;
-        }
-
-        h4 {
-            font-family: 'Teko';
-            font-style: italic;
-            font-weight: 700;
-            color: chocolate;
-            text-align: center;
-            margin: 0 auto;
-        }
-
-        p   {
-            font-family: 'Teko';
-            font-style: normal;
-            font-weight: 700;
-            text-align: center;
-            margin: 0 auto;
-        }
-
-        h5 {
-            margin: 0 auto;
-            text-align: center;
-        }
-
-    </style>
-    <title>Bird Game v1.0</title>
+    <title>To Do App</title>
 </head>
-<div>
-    <h2> BIRD GAME v1.0 </h2>
-</div>
-<body onload="startGame()">
-<canvas id="canvas" width="320" height="480"></canvas>
-<p><h4>PRESS LONG TO ACCELERATE THE BIRD</h4></p>
-<p><a>Refs: </a>
-    <a href="https://www.w3schools.com/graphics/game_gravity.asp" target="NewTab">Gravity Game</a>,
-    <a href="https://github.com/CodeExplainedRepo/FlappyBird-JavaScript" target="NewTab">Flappy Bird Game</a>,
-    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Touch_events" target="NewTab">Touch Events</a>,
-    <a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D" target="NewTab">Canvas Rendering</a>
-    <h5>© 2019 Abdulhalık Korkmaz, All Rights Reserved</h5>
-<script src="bird.js"></script>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        height: 100%;
+        background-color: #edf0f1;
+    }
+
+    p   {
+        font-style: italic;
+        font-weight: 400;
+        color: #806969;
+        text-align: center;
+        margin: 0 auto;
+        margin-top: 1rem;
+    }
+
+    a {
+        font-style: italic;
+        text-align: center;
+        color: #111;
+    }
+
+    .styling {
+        font-weight: 600;
+        color: #999999;
+    }
+
+    .input_div {
+        background-color: #25b99a;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 100px;
+    }
+
+    .input_div .input {
+        padding: 0.5rem 1rem;
+        height: 50px;
+        outline: none;
+        border: none;
+        background: rgba(255, 255, 255, 0.5);;
+        width: 250px;
+        font-size: 1rem;
+        font-weight: inherit;
+        margin: 0.25rem;
+        border-radius: 25px;
+    }
+
+    .addButton {
+        height: 50px;
+        width: 50px;
+        border-radius: 25px;
+        font-size: 1.5rem;
+        text-align: center;
+        outline: none;
+        border: none;
+        background-color: #fff;
+        color: #25b99a;
+        margin: 0.25rem;
+        background-color: #fff;
+        cursor: pointer;
+    }
+
+    .addButton:hover {
+        opacity: 0.7;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-top: 1rem;
+        padding: 0.5rem;
+    }
+
+    .item {
+        padding: 0.5rem;
+        margin-bottom: 1.5rem;
+        border: 3px solid #25b99a;
+        border-radius: 10px;
+    }
+
+    .item_input {
+        background: none;
+        outline: none;
+        color: #111;
+        border: none;
+        width: 200px;
+        font-size: 1rem;
+    }
+
+    .removeButton {
+        margin-left: 0.5rem;
+        font-size: 1rem;
+        font-weight: bold;
+        background: none;
+        outline: none;
+        color: #E00;
+        border: none;
+        cursor: pointer;
+    }
+
+</style>
+
+<body>
+    <div class="input_div">
+        <input class="input" type="text" placeholder="Ne yapmak istersin..">
+        <button class="addButton">+</button>
+    </div>
+    <p>Hint: Spor yap.</p>
+    <div class="container"></div>
+    <p>Refs:
+        <a href="https://www.w3schools.com/css/" target="NewTab">CSS</a>,
+        <a href="https://github.com/themaxsandelin/todo" target="NewTab">To Do App - 1</a>,
+        <a href="https://www.youtube.com/watch?v=Gp2bUX7_WIg&t=617s" target="NewTab">To Do App - 2</a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web" target="NewTab">Mozilla Dev</a>
+
+    <script>
+        const addButton = document.querySelector('.addButton');
+        var input = document.querySelector('.input');
+        const container = document.querySelector('.container');
+
+        class item {
+            constructor(itemName) {
+                //create the item div
+                this.createDiv(itemName);
+            }
+
+            createDiv(itemName){
+                let input = document.createElement('input');
+                input.value = itemName;
+                input.disabled = true;
+                input.classList.add('item_input');
+                input.type = "text";
+
+                let itemBox = document.createElement('div');
+                itemBox.classList.add('item');
+
+                let removeButton = document.createElement('button');
+                removeButton.innerHTML = "X";
+                removeButton.classList.add('removeButton');
+
+                container.appendChild(itemBox);
+
+
+                itemBox.appendChild(input);
+                itemBox.appendChild(removeButton);
+
+                removeButton.addEventListener('click', () => this.remove(itemBox));
+            }
+
+            remove(item) {
+                container.removeChild(item);
+            }
+        }
+
+        function check() {
+            console.log("checked");
+            if(input.value != "") {
+                new item(input.value);
+                input.value = "";
+            }
+        }
+
+        addButton.addEventListener('click', check);
+    </script>
 </body>
 </html>
