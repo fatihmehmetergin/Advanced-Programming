@@ -124,10 +124,8 @@
     <p>Hint: Spor yap.</p>
     <div class="container"></div>
     <p>Refs:
-        <a href="https://www.w3schools.com/css/" target="NewTab">CSS</a>,
         <a href="https://github.com/themaxsandelin/todo" target="NewTab">To Do App - 1</a>,
-        <a href="https://www.youtube.com/watch?v=Gp2bUX7_WIg&t=617s" target="NewTab">To Do App - 2</a>,
-        <a href="https://developer.mozilla.org/en-US/docs/Web" target="NewTab">Mozilla Dev</a>
+        <a href="https://www.youtube.com/watch?v=Gp2bUX7_WIg&t=617s" target="NewTab">To Do App - 2</a>
 
     <script>
         const addButton = document.querySelector('.addButton');
@@ -174,8 +172,15 @@
                 input.value = "";
             }
         }
+        
+        function checkAfterKeyPressed(event) {
+            if (event.which == 13) {
+                check();
+            }
+        }
 
         addButton.addEventListener('click', check);
+        input.addEventListener('keypress', checkAfterKeyPressed);
     </script>
 </body>
 </html>
