@@ -11,12 +11,7 @@
     <link rel="icon" sizes="192x192" href="JS.png">
 
   <script>
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker
-            .register('https://abdulhalik.github.io/Advanced-Programming/sw.js')
-            .then((reg) => { console.log('SW Registered', reg) })
-            .catch(console.log)
-    }
+    navigator.serviceWorker.register('sw.js')
   </script>
 
   <style>
