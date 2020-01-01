@@ -124,8 +124,10 @@
     <p>Hint: Spor yap.</p>
     <div class="container"></div>
     <p>Refs:
+        <a href="https://www.w3schools.com/css/" target="NewTab">CSS</a>,
         <a href="https://github.com/themaxsandelin/todo" target="NewTab">To Do App - 1</a>,
-        <a href="https://www.youtube.com/watch?v=Gp2bUX7_WIg&t=617s" target="NewTab">To Do App - 2</a>
+        <a href="https://www.youtube.com/watch?v=Gp2bUX7_WIg&t=617s" target="NewTab">To Do App - 2</a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web" target="NewTab">Mozilla Dev</a>
 
     <script>
         const addButton = document.querySelector('.addButton');
@@ -134,7 +136,6 @@
 
         class item {
             constructor(itemName) {
-                //create the item div
                 this.createDiv(itemName);
             }
 
@@ -162,23 +163,49 @@
             }
 
             remove(item) {
+                let input = item.firstChild;
                 container.removeChild(item);
+                var arr = JSON.parse(localStorage.getItem("items"));
+                for (i = 0; i < arr.length; i++) {
+                    if (arr[i] == input.value) {
+                        arr.splice(i,1);
+                        localStorage.setItem("items", JSON.stringify(arr));
+                    }
+                }
             }
         }
 
         function check() {
             if(input.value != "") {
                 new item(input.value);
+                if (localStorage.getItem("items") != null) {
+                    var arr = JSON.parse(localStorage.getItem("items"));
+                    arr.push(input.value);
+                } else {
+                    var arr = [input.value];
+                }
+                localStorage.setItem("items", JSON.stringify(arr));
                 input.value = "";
+
             }
         }
-        
+
         function checkAfterKeyPressed(event) {
+            document.querySelector(".input").focus();
             if (event.which == 13) {
                 check();
             }
         }
 
+        function onLoad() {
+            if(localStorage.getItem("items") != null) {
+                var arr = JSON.parse(localStorage.getItem("items"));
+                for (i in arr) {
+                    new item(arr[i]);
+                }
+            }
+        }
+        onLoad();
         addButton.addEventListener('click', check);
         input.addEventListener('keypress', checkAfterKeyPressed);
     </script>
